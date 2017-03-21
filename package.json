@@ -1,0 +1,20 @@
+{
+  "name": "mardraze",
+  "version": "1.0.1",
+  "description": "command line tool to setup dev environment",
+  "main": "index.js",
+  "scripts": {
+    "patch-release": "npm version patch && npm publish && git push --follow-tags",
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+ssh://git@github.com/mardraze/npm.git"
+  },
+  "author": "Marcin Drazek",
+  "license": "ISC",
+  "bugs": {
+    "url": "https://github.com/mardraze/npm/issues"
+  },
+  "homepage": "https://github.com/mardraze/npm#readme"
+}
