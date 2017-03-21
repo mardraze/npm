@@ -1,13 +1,12 @@
 {
   "name": "mardraze",
-  "version": "1.0.1",
+  "version": "1.0.2",
   "description": "command line tool to setup dev environment",
   "main": "app",
   "bin": "bin/mardraze.js",
   "scripts": {
     "patch-release": "npm version patch && npm publish && git push --follow-tags",
     "test": "echo \"Error: no test specified\" && exit 1"
-
   },
   "repository": {
     "type": "git",
