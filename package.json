@@ -5,7 +5,6 @@
   "main": "app",
   "bin": "bin/mardraze.js",
   "scripts": {
-    "patch-release": "npm version patch && npm publish && git push --follow-tags",
     "test": "echo \"Error: no test specified\" && exit 1"
   },
   "repository": {
@@ -17,5 +16,11 @@
   "bugs": {
     "url": "https://github.com/mardraze/npm/issues"
   },
-  "homepage": "https://github.com/mardraze/npm#readme"
+  "homepage": "https://github.com/mardraze/npm#readme",
+  "devDependencies": {
+    "babel-plugin-module-resolver": "^2.5.0",
+    "grunt": "^1.0.1",
+    "grunt-contrib-jshint": "^1.1.0",
+    "grunt-contrib-uglify": "^2.2.0"
+  }
 }
