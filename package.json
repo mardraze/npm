@@ -1,6 +1,6 @@
 {
   "name": "mardraze",
-  "version": "1.0.9",
+  "version": "1.0.10",
   "description": "command line tool to setup dev environment",
   "main": "app",
   "bin": "bin/mardraze.js",
