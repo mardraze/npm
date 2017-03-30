@@ -21,11 +21,8 @@ var commands = {
                     console.log(chalk.green('SUCCESS!'));
                     console.log('Angular project has been created in "'+dir+'" directory');
                     console.log('What next?');
-                    console.log('npm install - install depedencies');
-                    console.log('grunt - build code for debugging');
-                    console.log('grunt watch - watch file events, compile the code when file has been changed');
-                    console.log('grunt dist - minimalize the code');
-                    console.log('Output files has been created defautly in "out" directory');
+                    console.log(chalk.green('cd '+dir+' && npm install && grunt'));
+                    console.log(chalk.green('See files has been created defautly in "out" directory'));
                     return true;
                 }else{
                     if(exists){
