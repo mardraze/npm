@@ -1,37 +1,50 @@
 #!/usr/bin/node
 var shell = require('shelljs');
 var fs = require('fs');
-
+var chalk = require('chalk');
 if(!shell.which('git')){
-    shell.echo('git command is not found');
+    console.error('git command is not found');
     process.exit(1);
 }
 
 var commands = {
-    angular: function(dir){
-        if(!dir){
-            dir = 'mardraze-angular';
-        }
-        if (!fs.existsSync(dir)) {
-            shell.exec('git clone https://github.com/mardraze/angular '+dir);
-            shell.echo('Angular project has been created in "'+dir+'" directory');
-            shell.echo('What next?');
-            shell.echo('npm install - install depedencies');
-            shell.echo('grunt - build code for debugging');
-            shell.echo('grunt watch - watch file events, compile the code when file has been changed');
-            shell.echo('grunt dist - minimalize the code');
-            shell.echo('Output files has been created defautly in "out" directory');
-            return true;
+    angular: function(command, dir){
+        if(command === 'setup'){
+            if (dir){
+                var exists = fs.existsSync(dir);
+                var isEmpty = true;
+                if(exists){
+                    isEmpty = shell.ls(dir).length === 0;
+                }
+                if(isEmpty){
+                    shell.exec('git clone https://github.com/mardraze/angular '+dir);
+                    console.log(chalk.green('SUCCESS!'));
+                    console.log('Angular project has been created in "'+dir+'" directory');
+                    console.log('What next?');
+                    console.log('npm install - install depedencies');
+                    console.log('grunt - build code for debugging');
+                    console.log('grunt watch - watch file events, compile the code when file has been changed');
+                    console.log('grunt dist - minimalize the code');
+                    console.log('Output files has been created defautly in "out" directory');
+                    return true;
+                }else{
+                    if(exists){
+                        console.log(chalk.magenta('directory in not empty'));
+                    }
+                }
+            }else{
+                console.log(chalk.magenta('directory in required'));
+            }
         }else{
-            shell.echo('Directory "'+dir+'" is not empty');
+            console.log(chalk.magenta('Usage mardraze angular setup [directory]'));
         }
     }
 };
 
 var showHelp = function(){
     var possibleCommands = Object.keys(commands);
-    shell.echo('Usage: mardraze [command]');
-    shell.echo('Possible commands: '+possibleCommands.join(', '));
+    console.log('Usage: mardraze [command]');
+    console.log('Possible commands: '+possibleCommands.join(', '));
 };
 
 if(process.argv.length > 2){
@@ -43,7 +56,7 @@ if(process.argv.length > 2){
             process.exit(0);
         }
     }else{
-        shell.echo('Unknown command');
+        console.error(chalk.magenta('Unknown command "'+command+'"'));
         showHelp();
     }
 }else{
