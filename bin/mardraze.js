@@ -6,9 +6,11 @@ if(!shell.which('git')){
 }
 
 var commands = {
-    angular: function(attr1, attr2){
-        //shell.exec('git clone https://github.com/mardraze/angular .');
-        console.log(attr1, attr2);
+    angular: function(dir){
+        if(!dir){
+            dir = '.';
+        }
+        shell.exec('git clone https://github.com/mardraze/angular '+dir);
     }
 };
 
@@ -21,8 +23,7 @@ var showHelp = function(){
 if(process.argv.length > 2){
     var command = process.argv[2];
     if(commands.hasOwnProperty(command)){
-        var args = process.argv.slice(2, process.argv.length-2);
-        console.log(process.argv, args);
+        var args = process.argv.slice(3);
         commands[command].apply(undefined, args);
     }else{
         shell.echo('Unknown command');
