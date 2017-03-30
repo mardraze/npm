@@ -23,7 +23,7 @@ if(process.argv.length > 2){
     if(commands.hasOwnProperty(command)){
         var args = process.argv.slice(2, process.argv.length-2);
         console.log(process.argv, args);
-        commands[command](...args);
+        commands[command].apply(undefined, args);
     }else{
         shell.echo('Unknown command');
         showHelp();
