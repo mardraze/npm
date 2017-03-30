@@ -24,7 +24,6 @@
     "grunt-contrib-uglify": "^2.2.0"
   },
   "dependencies": {
-    "inherits": "^2",
     "shelljs": "*"
   }
 }
