@@ -18,11 +18,22 @@ var commands = {
                 }
                 if(isEmpty){
                     shell.exec('git clone https://github.com/mardraze/angular '+dir);
-                    console.log(chalk.green('SUCCESS!'));
-                    console.log('Angular project has been created in "'+dir+'" directory');
-                    console.log('What next?');
-                    console.log(chalk.green('cd '+dir+' && npm install && grunt'));
-                    console.log(chalk.green('See files has been created defautly in "out" directory'));
+                    shell.rm('-rf', dir+'/.git');
+                    shell.rm('-rf', dir+'/nbproject');
+                    console.log([
+                        chalk.green('SUCCESS!'),
+                        'Angular project has been created in "'+dir+'" directory',
+                        '',
+                        'What next?',
+                        '',
+                        chalk.green('cd '+dir+' && npm install && grunt'),
+                        '',
+                        'See files generated in "out" directory',
+                        '',
+                        'Try also:',
+                        chalk.green('grunt watch'),
+                        chalk.green('grunt dist')
+                    ].join("\n"));
                     return true;
                 }else{
                     if(exists){
