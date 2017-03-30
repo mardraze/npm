@@ -8,9 +8,10 @@ if(!shell.which('git')){
 var commands = {
     angular: function(dir){
         if(!dir){
-            dir = '.';
+            dir = 'mardraze-angular';
         }
         shell.exec('git clone https://github.com/mardraze/angular '+dir);
+        shell.echo('Angular project has been created in "'+dir+'" directory');
     }
 };
 
